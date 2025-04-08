@@ -1,0 +1,36 @@
+version: '3'
+
+tasks:
+  build:
+    desc: Build the project
+    cmds:
+      - go build -o bin/shortlink cmd/main.go
+
+  deps:
+    desc: Install dependencies
+    cmds:
+      - go mod tidy
+
+  clean-all:
+    desc: Clean all artifacts and caches
+    cmds:
+      - rm -rf bin/
+      - go clean
+      - go clean -cache
+      - go clean -modcache
+
+  docker-up:
+    desc: Start all Docker containers
+    cmds:
+      - docker-compose up -d
+
+  docker-down:
+    desc: Stop all Docker containers
+    cmds:
+      - docker-compose down -v
+
+  all:
+    desc: Run dependencies installation and build
+    cmds:
+      - task: deps
+      - task: build

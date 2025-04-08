@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS links (
+    links_id SERIAL PRIMARY KEY,
+    short_link VARCHAR(10) NOT NULL,
+    long_link TEXT NOT NULL,
+    create_ts TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    click_count INTEGER NOT NULL DEFAULT 0,
+    expire_ts TIMESTAMP WITHOUT TIME ZONE,
+    CONSTRAINT links_short_link_key UNIQUE (short_link)
+);

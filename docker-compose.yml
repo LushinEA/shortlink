@@ -4,7 +4,7 @@ services:
     container_name: shortlink-postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: yourpassword
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: shortlink_db
     ports:
       - "5432:5432"
